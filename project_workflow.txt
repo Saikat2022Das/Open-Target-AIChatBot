@@ -1,0 +1,25 @@
+1. User Input
+   "I am interested in breast cancer related drugs"
+
+2. LLM (Step 1: Reason).      <- DONE          " For Tool calling I'm using llama3.2:1b, because that model has tool calling capability"
+   - Detect disease entity: "breast cancer"
+   - Detect intent: drug discovery / known drugs
+
+3. LLM (Step 2: Tool Call)
+   → resolve_disease("breast cancer")
+
+4. Tool Response.                <- DONE
+   → MONDO_0007254
+
+5. LLM (Step 3: Next Reasoning)
+   - User intent: drug information
+   - Disease ID resolved
+   → fetch_known_drugs("MONDO_0007254")
+
+6. Tool Response
+   → JSON with drug-target-phase data
+
+7. LLM (Final Step)
+   - Summarize
+   - Format
+   - Provide structured clinical overview
